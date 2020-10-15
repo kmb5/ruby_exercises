@@ -5,7 +5,7 @@ def caesar_cipher(str, num)
     alphabet = "a".."z"
     alphabet = alphabet.to_a
 
-    str.split('').each { |c|
+    str.split('').each do |c|
 
         if alphabet.find_index(c.downcase).nil?
             result.push(c)
@@ -20,7 +20,7 @@ def caesar_cipher(str, num)
                 result.push(alphabet[offset])
             end
         end
-    }
+    end
 
     return result.join('')
     
