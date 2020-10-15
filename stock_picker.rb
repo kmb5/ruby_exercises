@@ -1,18 +1,17 @@
 def stock_picker(prices)
 
-    prices.each_with_index do |price, index|
+    best_prices_to_buy_and_sell = [0, 0]
 
-        selling_prices = prices[index..-1]
-        
-        min_selling_price = 0
+    for i in 0...(prices.length)
+        for j in i...(prices.length)
+            if (prices[j] - prices[i]) > (best_prices_to_buy_and_sell[1] - best_prices_to_buy_and_sell[0])
+                best_prices_to_buy_and_sell = [prices[i], prices[j]]
+            end
+        end
+    end
 
-        selling_prices.each do | selling_price | 
-        
-            profit = price - selling_price
+    return [prices.index(best_prices_to_buy_and_sell[0]), prices.index(best_prices_to_buy_and_sell[1])]
+end
 
-
-
-    prices.reduce() do | min_price, daily_price |
-        if 
-
-stock_picker([17,3,6,9,15,8,6,1,10])
+print stock_picker([17,3,6,9,15,8,6,1,10])
+puts
